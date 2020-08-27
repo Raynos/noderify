@@ -1,7 +1,7 @@
 {
   "name": "raynos-noderify",
   "description": "browserify for node",
-  "version": "5.0.0",
+  "version": "5.0.0-publish-temp1",
   "homepage": "https://github.com/staltz/noderify",
   "repository": {
     "type": "git",
