@@ -1,6 +1,10 @@
 function prelude(content, deps, entry) {
   var cache = {}
 
+  function requireNotSupported (mod) {
+    throw new Error('require is undefined, cannot require ' + mod)
+  }
+
   function load(file) {
     var d = deps[file]
     if (cache[file]) return cache[file].exports
@@ -9,7 +13,8 @@ function prelude(content, deps, entry) {
     var module = (cache[file] = {
       exports: {},
       parent: file !== entry,
-      require: require
+      require: typeof require !== 'undefined'
+        ? require : requireNotSupported
     })
     cache[file] = module
     var resolved = require('path').resolve(file)
